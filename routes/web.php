@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\PageController;
+use App\Models\Article;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,4 +19,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/about',[PageController::class, 'about'])->name('about');
+
+Route::get('/about', [PageController::class, 'about'])
+    ->name('about');
+
+Route::get('/article', [ArticleController::class, 'index'])
+    ->name('article.index');
