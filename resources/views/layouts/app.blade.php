@@ -11,6 +11,12 @@
 </head>
 <body>
 <div class="container mt-4">
+    <div>
+        <ul>
+            <li><a href="{{route('article.index',[],false)}}">Статьи</a></li>
+            <li><a href="{{route('about',[],false)}}">О нас</a></li>
+        </ul>
+    </div>
     <h1>@yield('header')</h1>
     <div>
         @yield('content')
