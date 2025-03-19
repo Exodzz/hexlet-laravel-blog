@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0bdb97ef81692011f60d91cc71a72209",
+    "content-hash": "2ab9f9a2d93fe371bcddf2d00a6f9273",
     "packages": [
         {
             "name": "brick/math",
@@ -5677,6 +5677,67 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "dev-lnk/laravel-code-builder",
+            "version": "v1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dev-lnk/laravel-code-builder.git",
+                "reference": "170786dce3982f9668caf91670c20f11a43b08de"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dev-lnk/laravel-code-builder/zipball/170786dce3982f9668caf91670c20f11a43b08de",
+                "reference": "170786dce3982f9668caf91670c20f11a43b08de",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.2"
+            },
+            "conflict": {
+                "laravel/framework": "<10.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^9.0",
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^11.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "DevLnk\\LaravelCodeBuilder\\Providers\\LaravelCodeBuilderProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "DevLnk\\LaravelCodeBuilder\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ivan Levchenko",
+                    "email": "lkivanmail@gmail.com",
+                    "homepage": "https://github.com/dev-lnk"
+                }
+            ],
+            "description": "Generate classes and files from table schema",
+            "keywords": [
+                "generation",
+                "laravel",
+                "schema"
+            ],
+            "support": {
+                "issues": "https://github.com/dev-lnk/laravel-code-builder/issues",
+                "source": "https://github.com/dev-lnk/laravel-code-builder/tree/v1.2"
+            },
+            "time": "2024-08-27T10:03:56+00:00"
+        },
         {
             "name": "fakerphp/faker",
             "version": "v1.24.1",
