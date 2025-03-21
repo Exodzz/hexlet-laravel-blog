@@ -24,4 +24,40 @@ class ArticleController extends Controller
         $articleItem = Article::findOrFail($id);
         return view('article.show', compact('articleItem'));
     }
+
+    /**
+     * Создание записи
+     */
+    public function create()
+    {
+        $article = new Article();
+        return view('article.create', compact('article'));
+    }
+
+    /**
+     * Возврат после создания
+     */
+    public function store(Request $request)
+    {
+        // Проверка введенных данных
+        // Если будут ошибки, то возникнет исключение
+        // Иначе возвращаются данные формы
+
+        $data = $request->validate([
+            'name' => 'required|unique:articles',
+            'body' => 'required|min:1000',
+
+        ]);
+
+        $article = new Article();
+        // Заполнение статьи данными из формы
+        $article->fill($data);
+        // При ошибках сохранения возникнет исключение
+        $article->save();
+
+        // Редирект на указанный маршрут
+        return redirect()
+            ->route('article.index');
+    }
+
 }
