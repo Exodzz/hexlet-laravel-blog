@@ -67,7 +67,7 @@ class ArticleController extends Controller
     }
 
     //Обновление записи
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id)
     {
         $article = Article::findOrFail($id);
         $data = $request->validate([
@@ -84,4 +84,10 @@ class ArticleController extends Controller
             ->route('article.index');
     }
 
+    public function destroy(int $id)
+    {
+        Article::findOrFail($id)->delete();
+        return redirect()
+            ->route('article.index');
+    }
 }

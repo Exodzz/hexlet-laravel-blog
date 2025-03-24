@@ -7,6 +7,8 @@
     @foreach ($articles as $article)
         <h2><a href="{{route('article.show',['id'=>$article->id],false)}}">{{$article->name}}</a>
             <span><a href="{{ route('article.edit', $article->id) }}">Изменить</a></span>
+            <span><a href="{{ route('article.destroy', $article->id) }}" data-confirm="Вы уверены?"
+                     data-method="delete" rel="nofollow">Удалить</a></span>
         </h2>
         {{-- Str::limit – функция-хелпер, которая обрезает текст до указанной длины --}}
         {{-- Используется для очень длинных текстов, которые нужно сократить --}}

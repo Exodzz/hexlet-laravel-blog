@@ -33,9 +33,13 @@ Route::get('article/create', [ArticleController::class , 'create'])
 //Запрос формы
 Route::get('article/{id}/edit', [ArticleController::class , 'edit'])
     ->name('article.edit');
+
 //Роут обновления
 Route::patch('article/{id}', [ArticleController::class , 'update'])
     ->name('article.update');
+
+Route::delete('article/{id}/del', [ArticleController::class, 'destroy'])
+    ->name('article.destroy');
 
 Route::get('/article/{id}', [ArticleController::class, 'show'])
     ->name('article.show');
