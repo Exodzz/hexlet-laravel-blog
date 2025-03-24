@@ -38,7 +38,7 @@ Route::get('article/{id}/edit', [ArticleController::class , 'edit'])
 Route::patch('article/{id}', [ArticleController::class , 'update'])
     ->name('article.update');
 
-Route::delete('article/{id}/del', [ArticleController::class, 'destroy'])
+Route::delete('article/{id}', [ArticleController::class, 'destroy'])
     ->name('article.destroy');
 
 Route::get('/article/{id}', [ArticleController::class, 'show'])
