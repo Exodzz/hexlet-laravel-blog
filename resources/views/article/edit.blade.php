@@ -7,7 +7,7 @@
         </ul>
     </div>
 @endif
-{{html()->modelForm($article,"PATCH",route('article.update',$article))->open()}}
+{{html()->modelForm($article,"PATCH",route('articles.update',$article))->open()}}
    @include('article.form')
     {{html()->submit('Обновить')}}
 {{html()->closeModelForm()}}

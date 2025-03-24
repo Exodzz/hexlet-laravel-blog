@@ -8,25 +8,16 @@ use Illuminate\Http\Request;
 class ArticleController extends Controller
 {
     /**
-     * Список статей
+     * Display a listing of the resource.
      */
     public function index()
     {
-        $articles = Article::paginate(2);
+        $articles = Article::paginate();
         return view('article.index', compact('articles'));
     }
 
     /**
-     * Статья Детальная
-     */
-    public function show(int $id)
-    {
-        $articleItem = Article::findOrFail($id);
-        return view('article.show', compact('articleItem'));
-    }
-
-    /**
-     * Создание записи
+     * Show the form for creating a new resource.
      */
     public function create()
     {
@@ -35,7 +26,7 @@ class ArticleController extends Controller
     }
 
     /**
-     * Возврат после создания
+     * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
@@ -45,7 +36,7 @@ class ArticleController extends Controller
 
         $data = $request->validate([
             'name' => 'required|unique:articles',
-            'body' => 'required|min:1000',
+            'body' => 'required|min:10',
 
         ]);
 
@@ -57,19 +48,33 @@ class ArticleController extends Controller
 
         // Редирект на указанный маршрут
         return redirect()
-            ->route('article.index');
+            ->route('articles.index');
     }
-    //Запрос формы
-    public function edit($id)
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(Article $article)
     {
-        $article = Article::findOrFail($id);
+        $article = Article::findOrFail($article->id);
+        return view('article.show', compact('article'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Article $article)
+    {
+        $article = Article::findOrFail($article->id);
         return view('article.edit', compact('article'));
     }
 
-    //Обновление записи
-    public function update(Request $request, int $id)
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Article $article)
     {
-        $article = Article::findOrFail($id);
+        $article = Article::findOrFail($article->id);
         $data = $request->validate([
             // У обновления немного измененная валидация
             // В проверку уникальности добавляется название поля и id текущего объекта
@@ -81,13 +86,16 @@ class ArticleController extends Controller
         $article->fill($data);
         $article->save();
         return redirect()
-            ->route('article.index');
+            ->route('articles.index');
     }
 
-    public function destroy(int $id)
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Article $article)
     {
-        Article::findOrFail($id)->delete();
+        Article::findOrFail($article->id)->delete();
         return redirect()
-            ->route('article.index');
+            ->route('articles.index');
     }
 }
